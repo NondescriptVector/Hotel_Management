@@ -39,7 +39,6 @@ public class Room {
             X.nextLine();
             if(in == 0){
                 this.nights += nights;
-                this.Booked = true;
             }
         }
         else {
