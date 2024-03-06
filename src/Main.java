@@ -2,14 +2,15 @@ import java.util.*;
 
 public class Main {
     static Scanner X = new Scanner(System.in);
-    static User user1 = new User("Monke1", "shit1shit1");
-    static User user2 = new User("Monke2", "shit2shit2");
-    static Hotel hotel1 = new Hotel(3, 5);
-    static ArrayList<User> Users = new ArrayList<>();
+    static staff staff1 = new staff("Mohamed Essam", "123abc");
+    static staff staff2 = new staff("Akram Ahmed", "456def");
+    static staff staff3 = new staff("Ziad Ahmed", "789ghi");
+    static staff staff4 = new staff("Youssef Mamdouh", "101jkl");
+    static staff staff5 = new staff("Abdallah Nagah","112mno");
+    static Hotel OurHotel = new Hotel(3, 5);
+    static staff[] staff = {staff1,staff2,staff3,staff4,staff5};
 
     public static void main(String[] args) {
-        Users.add(user1);
-        Users.add(user2);
         boolean auth = Login();
         int in;
         if(auth){
@@ -29,13 +30,13 @@ public class Main {
                         auth = false;
                         break;
                     case 1:
-                        hotel1.ShowAllRooms();
+                        OurHotel.ShowAllRooms();
                         break;
                     case 2:
-                        hotel1.ShowAvailableRooms();
+                        OurHotel.ShowAvailableRooms();
                         break;
                     case 3:
-                        hotel1.ShowBookedRooms();
+                        OurHotel.ShowBookedRooms();
                         break;
                     case 4:
                         Reservation();
@@ -48,17 +49,17 @@ public class Main {
     }
 
     static boolean Login() {
-        String in;
+        String staffiD, password;
         while (true) {
-            System.out.println("Hotel management System(Made by SAFWA MONKE)");
-            System.out.print("Enter your Staff ID: ");
-            in = X.next();
-            for (User M : Users) {
-                if (M.StaffID.equalsIgnoreCase(in)) {
+            System.out.print("Enter your staff ID: ");
+            staffiD = X.next();
+            for (int i=0; i < staff.length; i++) {
+                if (staffiD.equalsIgnoreCase(staff[i].staffiD)) {
                     System.out.print("Enter your password: ");
-                    in = X.next();
-                    if(M.Password.equals(in))
+                    password=X.next();
+                    if(password.equals(staff[i].password)){
                         return true;
+                    }
                 }
             }
             System.out.println("Incorrect username or password!");
@@ -71,13 +72,13 @@ public class Main {
         in = X.nextInt();
         X.nextLine();
 
-        hotel1.SearchByNumOfBeds(in);
+        OurHotel.SearchByNumOfBeds(in);
 
         System.out.print("Choose the room you want to reserve(Enter room number): ");
         in = X.nextInt();
         X.nextLine();
 
-        hotel1.Reservation(in);
+        OurHotel.Reservation(in);
 
         System.out.println("Reservation complete!");
     }
