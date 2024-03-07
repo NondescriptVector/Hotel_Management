@@ -1,5 +1,4 @@
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Room {
     int ID,NumOfBeds;
@@ -27,23 +26,36 @@ public class Room {
         System.out.println("____________________________________________________");
     }
     void Reservation(){
+
         int in;
         Scanner X = new Scanner(System.in);
+
         System.out.print("Enter number of nights you want to stay: ");
         int nights;
         nights = X.nextInt();
+
         if(this.nights != 0){
+
             System.out.println("Are you sure you want to reserve this room?\nIt will be a reservation for "+this.nights+" days from now" +
                     "\n(0)yes , (1) no");
             in = X.nextInt();
             X.nextLine();
+
             if(in == 0){
+
                 this.nights += nights;
+
             }
+
         }
+
         else {
+
             this.nights += nights;
             this.Booked = true;
+
         }
+
     }
+
 }
