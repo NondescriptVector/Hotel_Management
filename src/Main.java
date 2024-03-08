@@ -52,11 +52,11 @@ public class Main {
         String staffiD, password;
         while (true) {
             System.out.print("Enter your staff ID: ");
-            staffiD = X.next();
+            staffiD = X.nextLine();
             for (int i=0; i < staff.length; i++) {
                 if (staffiD.equalsIgnoreCase(staff[i].staffiD)) {
                     System.out.print("Enter your password: ");
-                    password=X.next();
+                    password=X.nextLine();
                     if(password.equals(staff[i].password)){
                         return true;
                     }
